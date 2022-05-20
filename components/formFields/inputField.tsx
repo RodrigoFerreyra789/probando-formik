@@ -1,15 +1,8 @@
 import { TextField, TextFieldProps } from '@mui/material';
 import { useField, FieldHookConfig } from 'formik';
 
-interface OtherProps {
-    label: string;
-}
-
-const InputField = ({
-    label,
-    ...rest
-}: OtherProps & TextFieldProps & FieldHookConfig<string>) => {
-    const [field, meta] = useField(rest);
+const InputField = (props: TextFieldProps & FieldHookConfig<string>) => {
+    const [field, meta] = useField(props);
 
     return (
         <>
@@ -18,7 +11,7 @@ const InputField = ({
                 helperText={meta.touched && meta.error}
                 fullWidth
                 {...field}
-                {...rest}
+                {...props}
             />
         </>
     );
