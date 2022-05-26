@@ -70,6 +70,7 @@ const Home: NextPage = () => {
             </Head>
 
             <main className={styles.main}>
+                <h1 className={styles.title}>formik</h1>
                 <Card
                     sx={{
                         p: 7,
