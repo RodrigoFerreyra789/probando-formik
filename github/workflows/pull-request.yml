@@ -1,0 +1,23 @@
+name: pull request readiness
+
+on:
+    pull_request:
+        branches: [develop]
+        types: [opened, synchronize]
+
+jobs:
+    pr-readiness:
+        runs-on: ubuntu-18.04
+        steps:
+            - name: getting the code
+              uses: actions/checkout@v2
+            - name: setup Node.js
+              uses: actions/setup-node@v2
+              with:
+                  node-version: '16'
+            - name: install yarn
+              run: npm install -g yarn
+            - name: install dependencies
+              run: yarn install --frozen-lockfile
+            - name: run linter
+              run: npm run lint
