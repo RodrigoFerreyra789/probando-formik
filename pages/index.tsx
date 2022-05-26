@@ -99,7 +99,7 @@ const Home: NextPage = () => {
                         validationSchema={currentValidationSchema}
                         onSubmit={handleSubmit}
                     >
-                        {({ isSubmitting }) => (
+                        {({ isSubmitting, dirty, isValid }) => (
                             <Form>
                                 <Box sx={{ mb: 5 }}>
                                     {renderStep(activeStep)}
@@ -124,7 +124,9 @@ const Home: NextPage = () => {
                                             <CircularProgress size={15} />
                                         )
                                     }
-                                    disabled={isSubmitting}
+                                    disabled={
+                                        isSubmitting || !isValid || !dirty
+                                    }
                                 >
                                     {isLastStep ? 'Register' : 'Next'}
                                 </Button>
