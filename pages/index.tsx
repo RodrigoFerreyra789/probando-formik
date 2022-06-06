@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Formik, Form } from 'formik';
 import type { NextPage } from 'next';
+import Router from 'next/router';
 import { Card, Box, CircularProgress, Button } from '@mui/material';
 import Head from 'next/head';
 import AccountData from '../components/register/forms/accoutData';
@@ -52,6 +53,7 @@ const Home: NextPage = () => {
             await fakeApiCall(5000);
             alert(JSON.stringify(values, null, 2));
             setRegistrationCompleted(true);
+            Router.push('https://www.google.com/');
             return;
         }
 
